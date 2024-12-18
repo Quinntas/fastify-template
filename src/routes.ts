@@ -17,8 +17,8 @@ export async function routes(app: FastifyTypedInstance) {
                 }
             }
         },
-        async (req, reply) => {
-            const {name, email} = req.body
+        async (request, reply) => {
+            const {name, email} = request.body
 
             console.log(name, email)
 

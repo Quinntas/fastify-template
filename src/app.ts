@@ -6,7 +6,9 @@ import {fastifySwaggerUi} from "@fastify/swagger-ui";
 import {FastifyTypedInstance} from "./types";
 import {routes} from "./routes";
 
-export const app: FastifyTypedInstance = fastify().withTypeProvider<ZodTypeProvider>()
+export const app: FastifyTypedInstance = fastify({
+    logger: false,
+}).withTypeProvider<ZodTypeProvider>()
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
@@ -31,6 +33,11 @@ app.register(fastifySwaggerUi, {
 })
 
 app.register(routes)
+
+app.setErrorHandler((error, request, reply) => {
+    console.error(error)
+    reply.status(500).send({message: "Internal server error"})
+})
 
 app.listen({port: 3000}, (err, address) => {
     if (err) {
