@@ -18,7 +18,7 @@ app.register(fastifyCors, {
 app.register(fastifySwagger, {
     openapi: {
         info: {
-            title: "Fastity Template",
+            title: "Fastify Template",
             description: "A template for Fastify projects",
             version: "1.0.0",
         },
