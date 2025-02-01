@@ -1,1 +1,1 @@
-import "./app"
+import "./start/app"
