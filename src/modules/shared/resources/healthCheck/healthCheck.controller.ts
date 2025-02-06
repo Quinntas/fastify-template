@@ -1,6 +1,4 @@
 import {z} from "zod";
-import {pgTable, serial} from "drizzle-orm/pg-core";
-import {db} from "../../../../start/database";
 import {controller} from "../../../../core/controller";
 
 export const healthCheckController = controller({
